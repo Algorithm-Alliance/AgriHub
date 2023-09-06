@@ -1,0 +1,17 @@
+import tensorflow as tf
+from tensorflow import keras
+
+# Define a convolutional neural network (CNN) model
+model = keras.Sequential([
+    keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(128, 128, 3)),
+    keras.layers.MaxPooling2D(pool_size=(2, 2)),
+    keras.layers.Flatten(),
+    keras.layers.Dense(64, activation='relu'),
+    keras.layers.Dense(10, activation='softmax')
+])
+
+# Compile the model
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+# Train the model with your image dataset
+model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test))
