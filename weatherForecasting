@@ -1,0 +1,15 @@
+import requests
+
+def get_weather_data(location):
+    # This function fetches weather data from a weather API based on the location.
+    api_key = 'your_weather_api_key'
+    url = f'https://api.weather.com/data/{location}?apikey={api_key}'
+    
+    response = requests.get(url)
+    data = response.json()
+    
+    return data
+
+# Example usage:
+weather_data = get_weather_data('rural_community_location')
+print(weather_data)
